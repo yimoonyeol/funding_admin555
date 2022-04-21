@@ -37,13 +37,7 @@ public class ViewController {
 		return "home";
 	}
 	
-	@RequestMapping("aCList")
-	public String list(Model model) {
-		
-		
-		
-		return "aCList";
-	}
+
 	
 }
 

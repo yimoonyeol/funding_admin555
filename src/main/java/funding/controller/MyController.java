@@ -14,5 +14,7 @@ public class MyController {
 	 return "sQApply_view";
 	 
  }
+ 
+ 
 }
 
