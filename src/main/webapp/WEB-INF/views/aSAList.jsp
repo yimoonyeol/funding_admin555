@@ -406,7 +406,7 @@
     for (int i = 0; i < (countQuestion/10)+1; i++) {
     	
     	%>
-    	    <li class="page-item"><a class="page-link" href="/aSAList?page=<%=page10+i%>"><%=i%></a></li>
+    	    <li class="page-item"><a class="page-link" href="/aSAList?page=<%=page10+i%>"><%=page10+i%></a></li>
 	 <%   } %>
 	
 	
