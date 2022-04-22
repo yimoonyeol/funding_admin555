@@ -30,6 +30,7 @@ public class ANListCommand implements FCommand {
 		FDaoA dao = sqlSession.getMapper(FDaoA.class);
 		
 		ArrayList<FDtoNotice> dtos = dao.anotice_list();
+		
 		request.setAttribute("anotice_list", dtos);
 		
 

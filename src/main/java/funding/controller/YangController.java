@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import funding.command.ACListCommand;
 import funding.command.ANListCommand;
+import funding.command.ANCreateCommand;
+import funding.command.ANContentCommand;
+import funding.command.ANModifyCommand;
+import funding.command.ANRemoveCommand;
 import funding.command.ASystemQAnswerInsertCommand;
 import funding.command.ASystemQDetailCommand;
 import funding.command.ASystemQuestionRemoveCommand;
 import funding.command.FCommand;
-import funding.command.SystemQuestionCommand;
 import funding.command.SystemQuestionlistCommand;
 
 
@@ -50,7 +53,9 @@ public class YangController {
 	@RequestMapping("/aSystemQAnswerInsert")
 	public String aSystemQAnswerInsertCommand(HttpServletRequest request, Model model) {
 		System.out.println("컨트롤러 시작");
+		
 		String question_num =  request.getParameter("question_num");
+		
 		model.addAttribute("request", request);
 		command = new ASystemQAnswerInsertCommand();
 		command.execute(sqlSession, model);
@@ -94,5 +99,61 @@ public class YangController {
 		
 	}
 	
+	@RequestMapping("/anoticeCreate")
+	public String ANCreateCommand(HttpServletRequest request, Model model) {
+		System.out.println("컨트롤러 시작");
+		model.addAttribute("request", request);
+		command = new ANCreateCommand();
+		command.execute(sqlSession, model);
+		System.out.println("컨트롤러 끝");
+		return "redirect:/anotice_list";
+		
+	}
+	
+	@RequestMapping("/anoticeCreate_view")
+	public String aNoticeCreate() {
+	
+		return "aNoticeCreate";
+		
+	}
+	
+	@RequestMapping("/anoticeModify")
+	public String ANModifyCommand(HttpServletRequest request, Model model) {
+		System.out.println("컨트롤러 시작");
+		model.addAttribute("request", request);
+		String notice_num = request.getParameter("noticeNum");
+		command = new ANModifyCommand();
+		command.execute(sqlSession, model);
+		System.out.println("컨트롤러 끝");
+		
+		
+		
+		return "redirect:anotice_list";
+		
+}
+	
+	@RequestMapping("/anoticeContent_view")
+	public String ANContentCommand(HttpServletRequest request, Model model) {
+		System.out.println("컨트롤러 시작");
+		model.addAttribute("request", request);
+		command = new ANContentCommand();
+		command.execute(sqlSession, model);
+		System.out.println("컨트롤러 끝");
+		return "aNContentView";
+		
+	}
+	
+	@RequestMapping("/anoticeRemove")
+	public String ANRemovecommand(HttpServletRequest request, Model model) {
+		System.out.println("컨트롤러 시작");
+		model.addAttribute("request", request);
+		command = new ANRemoveCommand();
+		command.execute(sqlSession, model);
+		System.out.println("컨트롤러 끝");
+		return "redirect: anotice_list";
+		
+	}
+	
+
 
 }

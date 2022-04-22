@@ -36,7 +36,17 @@ public class FDtoNotice {
 		this.notice_title = notice_title;
 		this.notice_At = notice_At;
 	}
+	
+	
+	
 
+	public FDtoNotice(String notice_admin, String notice_title, String notice_content, Timestamp notice_At) {
+		super();
+		this.notice_admin = notice_admin;
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+		this.notice_At = notice_At;
+	}
 	public int getNotice_num() {
 		return notice_num;
 	}
