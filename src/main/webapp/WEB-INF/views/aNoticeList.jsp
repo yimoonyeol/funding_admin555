@@ -356,7 +356,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                                                                   <a
-					href="anoticeCreate_view.do">
+					href="anoticeCreate_view">
 				공지사항 추가</a>
 				<br>
 				<br>
@@ -386,7 +386,7 @@
                                             <td>${dto01.notice_title}</td>
                                             <td>${dto01.notice_At}</td>
                                             <td><a
-					href="anoticeContent_view.do?noticeNum=${dto01.notice_num}">수정
+					href="anoticeContent_view?noticeNum=${dto01.notice_num}">수정
 						/ 삭제</a></td>
      				
                                                                     

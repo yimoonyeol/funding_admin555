@@ -1,1 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="funding.dao.FDaoA">
+	<select id="countQuestion" resultType="int">
+		SELECT COUNT(QUESTION_NUM) FROM SYSTEM_QUESTION
+	</select>
+	
+	<select id="systemquestion_view" resultType="funding.dto.FDtoSystemQuestion">
+	
+		SELECT QUESTION_NUM, QUESTION_TITLE, QUESTION_AT, QUESTION_STATE FROM SYSTEM_QUESTION ORDER BY QUESTION_AT DESC LIMIT 10 OFFSET #{param1}
+	</select>
+	
+	<select id="SystemQuestionDetail" resultType="funding.dto.FDtoSystemQuestion">
+	
+		SELECT QUESTION_NUM, QUESTION_CUSTOMER, QUESTION_TITLE, QUESTION_CONTENT, QUESTION_ANSWER FROM SYSTEM_QUESTION WHERE QUESTION_NUM = #{param1} 
+	</select>
+	
+	<select id="clist" resultType="funding.dto.FDtoC">
+	SELECT CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_PHONE, ADDRESS_STATE, ADDRESS_CITY, ADDRESS_LINE FROM CUSTOMER, ADDRESS WHERE CUSTOMER.CUSTOMER_ID = ADDRESS.ADDRESS_CUSTOMER
+	</select>
+	
+	<select id="anotice_list" resultType="funding.dto.FDtoNotice">
+	SELECT NOTICE_NUM, NOTICE_ADMIN, NOTICE_TITLE, NOTICE_AT FROM NOTICE ORDER BY NOTICE_AT DESC
+	</select>
+	
+	<update id="SystemQAnswerInsert">
+		UPDATE SYSTEM_QUESTION SET QUESTION_ANSWER = #{param1}, QUESTION_STATE = "완료" WHERE QUESTION_NUM = #{param2}
+	</update>
+	
+	<update id="SystemQuestionRemove">
+		UPDATE SYSTEM_QUESTION SET QUESTION_ANSWER = "", QUESTION_STATE = "답변대기"  WHERE question_num = #{param1}
+	</update>
+	
+	<insert id = "anoticecreate">
+		INSERT INTO NOTICE (NOTICE_ADMIN, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_AT) VALUES (#{param1}, #{param2}, #{param3}, NOW())
+	</insert>
+	
+	<update id="anoticemodify">
+	UPDATE NOTICE SET NOTICE_TITLE = #{param2}, NOTICE_CONTENT = #{param3}, NOTICE_AT = #{param4}  WHERE NOTICE_NUM = #{param1}
+	</update>
+	
+	<select id="noticecontent" resultType="funding.dto.FDtoNotice">
+		SELECT NOTICE_NUM, NOTICE_ADMIN, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_AT FROM NOTICE WHERE NOTICE_NUM = #{param1}
+	</select>
+
+	<delete id="deleteDao">
+		DELETE FROM BOARD WHERE MID = #{param1}
+	</delete>
+	
+	<delete id="anoticedelete">
+	DELETE FROM NOTICE WHERE NOTICE_NUM = #{param1}
+	</delete>
+
+
+</mapper>

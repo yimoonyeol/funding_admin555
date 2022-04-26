@@ -391,7 +391,30 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <% int pages = 1; %>
+                                <% 
+    Object OcountQuestion = request.getAttribute("countQuestion");
+    Object Opage10 = request.getAttribute("page");
+    
+    int countQuestion = (Integer) OcountQuestion;
+    int page10 = (Integer) Opage10; %>
+
+                                                    <ul class="pagination">
+<li class="page-item"><a class="page-link" href="/aSAList?page=<%=page10-3%>">이전</a></li> 
+    <% 
+    
+    for (int i = 0; i < (countQuestion/10)+1; i++) {
+    	
+    	%>
+    	    <li class="page-item"><a class="page-link" href="/aSAList?page=<%=page10+i%>"><%=page10+i%></a></li>
+	 <%   } %>
+	
+	
+	   <li><a class="page-link" href="/aSAList?page=<%=page10+3%>">다음</a></li> 
+</ul>
+         
                         </div>
+               
                     </div>
 
                 </div>

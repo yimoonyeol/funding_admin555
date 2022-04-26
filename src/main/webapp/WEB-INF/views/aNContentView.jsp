@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login - SB Admin</title>
-        <link href="resource/css/styles.css" rel="stylesheet" />
+        <link href="resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -22,7 +22,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">수정 / 삭제</h3></div>
                                     <div class="card-body">
-                                        <form method="get" action = "anoticeModify.do">
+                                        <form method="get" action = "anoticeModify">
                                     				<input type="hidden" name="noticeNum" value="${noticecontent.notice_num}">
                                     				<input type="hidden" name="notice_At" value="${noticecontent.notice_At}">
                                                 <div class="container">
@@ -68,6 +68,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="resources/js/scripts.js"></script>
     </body>
 </html>

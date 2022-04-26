@@ -1,11 +1,9 @@
 package funding.command;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 public interface FCommand {
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	
+	void execute(SqlSession sqlSession, Model model);
 }
